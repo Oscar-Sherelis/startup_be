@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 const crypto = require('crypto');
 require('./passwordHash');
 
-// ***Still working on routes
+// *** Still working on routes
 // return mongoDB data
 app.get('/data', (req, res) => {
 

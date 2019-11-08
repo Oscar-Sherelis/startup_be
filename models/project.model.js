@@ -1,31 +1,34 @@
 const mongoose = require('mongoose');
 
-const startupSchema = new mongoose.Schema({
-    startupName: {
+const projectSchema = new mongoose.Schema({
+    projectId: {
+        type: Number
+    },
+    projectName: {
         type: String,
         required: 'This field is required'
     },
-    startupPhoto: {
+    image: {
         type: String
     },
-    startupLocation: {
+    projectLocation: {
         type: String,
         required: 'This field is required'
     },
     professionalsNeeded: {
         type: Array
     },
-    startupArea: {
+    projectArea: {
         type: String,
         required: 'This field is required'
     },
-    startupShortDescription: {
+    projectShortDescription: {
         type: String,
         required: 'This field is required'
     },
-    startupDescription: {
+    projectDescription: {
         type: String
     }
 });
 
-mongoose.model('startups', startupSchema);
+mongoose.model('projects', projectSchema);
