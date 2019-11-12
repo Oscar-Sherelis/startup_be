@@ -9,4 +9,5 @@ mongoose.connect('mongodb://localhost:27017/test',
 err => { if(!err) { console.log('Successful connection') }
 	else { console.log('error ' + err) }});
 
-require('..models/user.model.js');
+require('../models/user.model.js');
+require('../models/project.model');
