@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+
 const addNewUserMiddleware = require('../../middlewares/user/register');
 const loginMiddleware = require('../../middlewares/user/login');
 const getUsersMiddleware = require('../../middlewares/user/getUsers');
@@ -26,7 +27,7 @@ const getUsers = (app) => {
 }
 
 const deleteUser = (app) => {
-  app.delete('delete-user/:id', [deleteUserMiddleware], (req, res) => {
+  app.delete('/delete-user/:id', [deleteUserMiddleware], (req, res) => {
     return res.json({ message: 'User deleted'})
   });
 }

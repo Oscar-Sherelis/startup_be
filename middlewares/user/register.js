@@ -17,7 +17,7 @@ const addNewUser = async (req, res, next) => {
    user.password = req.body.password,
    user.phonenumber = req.body.phonenumber,
    user.country = req.body.country,
-   user.userPhoto = req.body.userPhoto,
+   user.image = req.body.image,
    user.description = req.body.description
 
     await user.save(req.body);

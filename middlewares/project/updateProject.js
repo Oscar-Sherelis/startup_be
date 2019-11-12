@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const projectModel = mongoose.model('projects');
-const project = new projectModel();
 
 /**
  * @param {*} req Express req Object

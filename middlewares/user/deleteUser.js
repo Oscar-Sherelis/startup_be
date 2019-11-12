@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const userModel = mongoose.model('users');
-// const user = new userModel();
 
 /**
  * @param {*} req Express req Object

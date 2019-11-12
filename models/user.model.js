@@ -18,12 +18,12 @@ const userSchema = new mongoose.Schema({
         // required: 'This field is required'
     },
     phonenumber: {
-        type: Number
+        type: String
     },
     country: {
         type: String,
     },
-    userPhoto: {
+    image: {
         type: String
     },
     description: {

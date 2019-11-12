@@ -13,7 +13,7 @@ const loginMiddleware = async (req, res, next) => {
             // response.status(400).send({ addError: "Email already exists " });
             return next();
           } else {
-            return res.send({ message: "Email not found"})
+            return res.send({ message: "Wrong email or password"})
           }
         });
   
