@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    projects: {
+    userPprojects: {
         type: Array
     }
 });

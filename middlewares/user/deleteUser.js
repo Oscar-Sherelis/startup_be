@@ -14,9 +14,9 @@ const userModel = mongoose.model('users');
           // return person object, what was deleted
           res
             .status(201)
-            .send({ success: deletedUser.firstname + " was deleted successfully " });
+            .send({ message: deletedUser.firstname + " was deleted successfully " });
         } catch (err) {
-          res.status(400).send({ error: "Delete error " });
+          res.status(400).send({ message: "Delete error " });
         }
       });
  }

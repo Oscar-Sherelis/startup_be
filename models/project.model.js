@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 
 const projectSchema = new mongoose.Schema({
-    projectId: {
-        type: Number
-    },
+    
     projectName: {
         type: String,
         // required: 'This field is required'
