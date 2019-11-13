@@ -1,32 +1,46 @@
 const express = require("express");
 const app = express();
 
-const addProjectMiddleware = require('../../middlewares/project/addProject');
-const getProjectsMiddleware = require('../../middlewares/project/getProjects');
-const deleteProjectMiddleware = require('../../middlewares/project/deleteProject');
-const updateProjectMiddleware = require('../../middlewares/project/updateProject');
+const addProjectController = require('../../Controllers/project/addProject');
+const getProjectsController = require('../../Controllers/project/getProjects');
+const deleteProjectController = require('../../Controllers/project/deleteProject');
+const updateProjectController = require('../../Controllers/project/updateProject');
 
 // Project routes
 const addProject = (app) => {
-    app.post('/add-project', [addProjectMiddleware], (req, res) => {
-      return res.json({ message: 'New project added' }).status(200);
+    app.post('/add-project', (req, res) => {
+      return addProjectController;
     });
   }
   
   const getProjects = (app) => {
-    app.get('/projects', [getProjectsMiddleware], (req, res) => {
-      return res.json({ message: 'Projects loaded successfully'}).status(200)
+    app.get('/projects', (req, res) => {
+      return getProjectsController;
+    });
+  }
+
+  const getProject = (app) => {
+    app.get('/project/:project-id', (req, res) => {
+      return getProjectController
+    })
+  }
+
+  // 1 validate 2 auth 3 getUsersProject
+  const getUserProject = (app) => {
+    app.get('/projects/:users-project-id?', [getUserProjectController], (req, res) => {
+      return res.json({ message: 'User project loaded successfully' }).status(200)
     });
   }
   
+
   const deleteProject = (app) => {
-    app.delete('/delete-project/:id', [deleteProjectMiddleware], (req, res) => {
+    app.delete('/delete-project/:id', [deleteProjectController], (req, res) => {
       return res.json({ message: 'Project deleted'}).status(200)
     });
   }
 
   const updateProject = (app) => {
-    app.put('/update-project/:id', [updateProjectMiddleware], (req, res) => {
+    app.put('/update-project/:id', [updateProjectController], (req, res) => {
       return res.json({ message: 'Project updated successfully'}).status(200)
     });
   }
@@ -35,6 +49,8 @@ const addProject = (app) => {
   module.exports =  {
     addProject,
     getProjects,
+    getProject,
+    getUserProject,
     deleteProject,
     updateProject
   }

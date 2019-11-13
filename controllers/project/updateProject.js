@@ -7,7 +7,7 @@ const projectModel = mongoose.model('projects');
  * @param {*} next  Express next Function
  */
 
-const updateProjectMiddleware = (req, res, next) => {
+const updateProjectController = (req, res, next) => {
     projectModel.findOneAndUpdate(
       { _id: req.params.id },
       req.body,
@@ -25,4 +25,4 @@ const updateProjectMiddleware = (req, res, next) => {
     );
   }
 
-  module.exports = updateProjectMiddleware
+  module.exports = updateProjectController

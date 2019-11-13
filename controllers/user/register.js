@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const userModel = mongoose.model('users');
 const user = new userModel();
 
-const hashPass = require('../../passwordHash');
+const hashPass = require('../../utilities/passwordHash');
 
-const saltHashPassword = (userpassword) => {
+const saltHashPassword = (password) => {
   let salt = hashPass.genRandomString(16); /** Gives us salt of length 16 */
-  let passwordData = hashPass.sha512(userpassword, salt);
+  let passwordData = hashPass.sha512(password, salt);
   return passwordData.passwordHash;
 }
 

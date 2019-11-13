@@ -8,7 +8,7 @@ const projectModel = mongoose.model('projects');
  * @param {*} next  Express next Function
  */
 
- const deleteProjectMiddleware = async (req, res, next) => {
+ const deleteProjectController = async (req, res, next) => {
     projectModel.findByIdAndRemove({ _id: req.params.id }).then(deletedProject => {
         try {
           // return person object, what was deleted
@@ -21,4 +21,4 @@ const projectModel = mongoose.model('projects');
       });
  }
 
- module.exports = deleteProjectMiddleware;
+ module.exports = deleteProjectController;

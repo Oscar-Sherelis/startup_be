@@ -7,9 +7,11 @@ const project = new projectModel();
  * @param {*} res  Express res Object
  * @param {*} next  Express next Function
  */
-const addProjectMiddleware = async (req, res, next) => {
-// const Logger = Container.get('logger');
+const addProjectController = async (req, res, next) => {
 
+// responses only in Controllers ?
+// Middlewares rename to controllers DONE
+// services - validation, authentification
   try {
     project.projectName = req.body.projectName,
     project.photo = req.body.photo,
@@ -22,13 +24,10 @@ const addProjectMiddleware = async (req, res, next) => {
     project.timeInserted = req.body.timeInserted
 
     await project.save(req.body);
-    if (!req.body) {
-      return res.sendStatus(401);
-    }
     return next();
   } catch (e) {
     return next(e);
   }
 };
 
-module.exports = addProjectMiddleware;
+module.exports = addProjectController;

@@ -7,7 +7,7 @@ const userModel = mongoose.model('users');
  * @param {*} next  Express next Function
  */
 
- const deleteUserMiddleware = async (req, res, next) => {
+ const deleteUserController = async (req, res, next) => {
      
   userModel.findByIdAndRemove({ _id: req.params.id }).then(deletedUser => {
         try {
@@ -21,4 +21,4 @@ const userModel = mongoose.model('users');
       });
  }
 
- module.exports = deleteUserMiddleware;
+ module.exports = deleteUserController;

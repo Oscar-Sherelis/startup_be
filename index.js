@@ -12,11 +12,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-// for password hashing
-// const crypto = require('crypto');
-// not working***
-// require('./passwordHash.js');
-
 // routes
 
 // user routes

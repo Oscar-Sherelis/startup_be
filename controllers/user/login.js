@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const userModel = mongoose.model('users');
 const user = new userModel();
 
-const loginMiddleware = async (req, res, next) => {
+const loginController = async (req, res, next) => {
     try {
         user.email = req.body.email,
         user.password = req.body.password,
@@ -22,4 +22,4 @@ const loginMiddleware = async (req, res, next) => {
        }
 }
 
-module.exports = loginMiddleware;
+module.exports = loginController;
