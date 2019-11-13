@@ -3,7 +3,7 @@ const app = express();
 
 const addProjectMiddleware = require('../../middlewares/project/addProject');
 const getProjectsMiddleware = require('../../middlewares/project/getProjects');
-const deleteProjectMiddleware = require('../../middlewares/project/getProjects');
+const deleteProjectMiddleware = require('../../middlewares/project/deleteProject');
 const updateProjectMiddleware = require('../../middlewares/project/updateProject');
 
 // Project routes

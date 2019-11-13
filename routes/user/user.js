@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 
-
 const addNewUserMiddleware = require('../../middlewares/user/register');
 const loginMiddleware = require('../../middlewares/user/login');
 const getUsersMiddleware = require('../../middlewares/user/getUsers');

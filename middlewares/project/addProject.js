@@ -12,7 +12,7 @@ const addProjectMiddleware = async (req, res, next) => {
 
   try {
     project.projectName = req.body.projectName,
-    project.image = req.body.image,
+    project.photo = req.body.photo,
     project.projectLocation = req.body.projectLocation,
     project.professionalsNeeded = req.body.professionalsNeeded,
     project.projectArea = req.body.projectArea,

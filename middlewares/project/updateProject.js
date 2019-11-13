@@ -7,17 +7,17 @@ const projectModel = mongoose.model('projects');
  * @param {*} next  Express next Function
  */
 
-const updateProjectMiddleware =(req, res, next) => {
+const updateProjectMiddleware = (req, res, next) => {
     projectModel.findOneAndUpdate(
-      { _id: req.body._id },
+      { _id: req.params.id },
       req.body,
       { new: true },
       (err, doc) => {
         if (err) {
-          res.status(400).send({ error: "Update was not successfull" });
+          res.status(400).send({ message: "Update was not successfull" });
         } else {
           res.status(201).send({
-            message: req.body.name + " Updated successfully",
+            message: req.body.projectName + " project updated successfully",
             project: req.body
           });
         }

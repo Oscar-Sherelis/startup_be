@@ -14,9 +14,9 @@ const projectModel = mongoose.model('projects');
           // return person object, what was deleted
           res
             .status(201)
-            .send({ success: deletedProject.name + " was deleted successfully " });
+            .send({ message: deletedProject.projectName + " was deleted successfully " });
         } catch (err) {
-          res.status(400).send({ error: "Delete error " });
+          res.status(400).send({ message: "Delete error " });
         }
       });
  }
