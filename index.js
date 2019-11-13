@@ -19,20 +19,19 @@ app.use(bodyParser.json());
 
 // routes
 
-// user route
+// user routes
 const userRoute = require('./routes/user/user');
 userRoute.register(app);
 userRoute.login(app);
 userRoute.getUsers(app);
 userRoute.deleteUser(app);
 
-// project route
+// project routes
 const projectRoute = require('./routes/project/project');
 projectRoute.addProject(app);
 projectRoute.getProjects(app);
 projectRoute.deleteProject(app);
 projectRoute.updateProject(app);
-// register(app)
 
 const PORT = 5000;
 

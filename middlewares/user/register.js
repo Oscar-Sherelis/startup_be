@@ -2,6 +2,14 @@ const mongoose = require('mongoose');
 const userModel = mongoose.model('users');
 const user = new userModel();
 
+const hashPass = require('../../passwordHash');
+
+const saltHashPassword = (userpassword) => {
+  let salt = hashPass.genRandomString(16); /** Gives us salt of length 16 */
+  let passwordData = hashPass.sha512(userpassword, salt);
+  return passwordData.passwordHash;
+}
+
 /**
  * @param {*} req Express req Object
  * @param {*} res  Express res Object
@@ -14,7 +22,7 @@ const addNewUser = async (req, res, next) => {
    user.firstname = req.body.firstname,
    user.lastname = req.body.lastname,
    user.email = req.body.email,
-   user.password = req.body.password,
+   user.password = saltHashPassword(req.body.password),
    user.phonenumber = req.body.phonenumber,
    user.country = req.body.country,
    user.image = req.body.image,

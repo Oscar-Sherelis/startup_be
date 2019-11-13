@@ -20,13 +20,13 @@ const addProject = (app) => {
   }
   
   const deleteProject = (app) => {
-    app.delete('delete-project/:id', [deleteProjectMiddleware], (req, res) => {
+    app.delete('/delete-project/:id', [deleteProjectMiddleware], (req, res) => {
       return res.json({ message: 'Project deleted'}).status(200)
     });
   }
 
   const updateProject = (app) => {
-    app.put('update-project/:id', [updateProjectMiddleware], (req, res) => {
+    app.put('/update-project/:id', [updateProjectMiddleware], (req, res) => {
       return res.json({ message: 'Project updated successfully'}).status(200)
     });
   }
