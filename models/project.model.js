@@ -28,6 +28,9 @@ const projectSchema = new mongoose.Schema({
     },
     timeInserted: {
         type: Number
+    },
+    userEmail: {
+        type: String
     }
 });
 

@@ -12,6 +12,7 @@ const addProjectController = async (req, res, next) => {
 // responses only in Controllers ?
 // Middlewares rename to controllers DONE
 // services - validation, authentification
+// remove responses from routes
   try {
     project.projectName = req.body.projectName,
     project.photo = req.body.photo,
@@ -21,12 +22,15 @@ const addProjectController = async (req, res, next) => {
     project.projectShortDescription = req.body.projectShortDescription,
     project.projectDescription = req.body.projectDescription,
     project.lastUpdate = req.body.lastUpdate,
-    project.timeInserted = req.body.timeInserted
+    project.timeInserted = req.body.timeInserted,
+    project.userEmail = req.body.email
 
     await project.save(req.body);
-    return next();
+    return res
+    .status(201)
+    .send({ message: " Project added successfully " });
   } catch (e) {
-    return next(e);
+    return e;
   }
 };
 
