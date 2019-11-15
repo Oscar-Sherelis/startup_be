@@ -10,7 +10,6 @@ const loginController = async (req, res, next) => {
          await userModel.findOne({ email: user.email, password: user.password })
           .then(result => {
           if (result) {
-            // response.status(400).send({ addError: "Email already exists " });
             return next();
           } else {
             return res.send({ message: "Wrong email or password"})

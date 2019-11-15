@@ -26,7 +26,12 @@ const sha512 = (password, salt) => {
     };
 };
 
+const saltHashPassword = (password) => {
+    let salt = genRandomString(16); /** Gives us salt of length 16 */
+    let passwordData = sha512(password, salt);
+    return passwordData.passwordHash;
+  }
+
 module.exports = {
-     genRandomString,
-     sha512
+     saltHashPassword
     }
