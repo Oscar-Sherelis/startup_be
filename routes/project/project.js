@@ -28,7 +28,6 @@ const addProject = (app) => {
     });
   }
   
-
   const deleteProject = (app) => {
     app.delete('/delete-project/:id', [deleteProjectController], (req, res) => {
     });

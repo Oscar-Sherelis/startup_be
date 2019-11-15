@@ -8,7 +8,8 @@ const deleteUserController = require('../../Controllers/user/deleteUser');
 
 // User routes
 const register = (app) => {
-  app.post('/register', [addNewUserController], (req, res) => {
+  app.post('/register', (req, res) => {
+    return addNewUserController(req, res);
   });
 }
 

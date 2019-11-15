@@ -10,7 +10,8 @@ const loginController = async (req, res, next) => {
          await userModel.findOne({ email: user.email, password: user.password })
           .then(result => {
           if (result) {
-            return next();
+            // after successfull log in send user id to find all users projects
+            return res.send({ userId: user._id});
           } else {
             return res.send({ message: "Wrong email or password"})
           }
