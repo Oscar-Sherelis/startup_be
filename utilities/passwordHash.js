@@ -4,11 +4,6 @@ const crypto = require("crypto");
  * @function
  * @param {number} length - Length of the random string.
  */
-const genRandomString = (length) => {
-    return crypto.randomBytes(Math.ceil(length / 2))
-        .toString('hex') /** convert to hexadecimal format */
-        .slice(0,length);   /** return required number of characters */
-};
 
 /**
  * hash password with sha512.
@@ -27,8 +22,7 @@ const sha512 = (password, salt) => {
 };
 
 const saltHashPassword = (password) => {
-    let salt = genRandomString(16); /** Gives us salt of length 16 */
-    let passwordData = sha512(password, salt);
+    let passwordData = sha512(password, 'secret');
     return passwordData.passwordHash;
   }
 

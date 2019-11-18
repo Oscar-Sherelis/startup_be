@@ -1,26 +1,43 @@
 const mongoose = require('mongoose');
 const userModel = mongoose.model('users');
-// const user = new userModel();
+const projectModel = mongoose.model('projects');
 
-/**
- * @param {*} req Express req Object
- * @param {*} res  Express res Object
- * @param {*} next  Express next Function
- */
-const getUsersController = (req, res, next) => {
 
-  userModel.find((err, docs) => {
-        if (err) {
-          res.status(401).send({
-            message: "Data collecting went wrong "
-          });
-        } else {
-          res.status(200).send({
-            message: "Collected data from database",
-            users: docs
-          });
-        }
-      });
+const getUsersController = async (req, res) => {
+  const user = await userModel.findById(req.user._id);
+  
+  
+  const projects = []
+  if(user.projects !== undefined){
+    user.projects.forEach(pr => {
+      let project = projectModel.findById(pr._id)
+      let toPush = {
+        _id: project._id,
+        name: project.name,
+        location: project.location,
+        professionalsNeeded: project.professionalsNeeded,
+        area: project.area,
+        shortDescription: project.shortDescription
+        // image
+      }
+      projects.push(toPush)
+    });
+  }
+
+
+  const toSend = {
+    _id: user._id,
+    firstname: user.firstname,
+    lastname: user.lastname,
+    email: user.email,
+    links: user.links,
+    phonenumber: user.phonenumber,
+    location: user.location,
+    projects
+    // photo
+  }
+
+  return res.json(toSend);
 }
 
 module.exports = getUsersController;

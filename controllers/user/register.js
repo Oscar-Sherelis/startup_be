@@ -5,12 +5,7 @@ const user = new userModel();
 const hashPass = require('../../utilities/passwordHash');
 const saltHashPassword = hashPass.saltHashPassword;
 
-/**
- * @param {*} req Express req Object
- * @param {*} res  Express res Object
- * @param {*} next  Express next Function
- */
-const addNewUser = async (req, res, next) => {
+const addNewUser = async (req, res) => {
   try {
     (user.firstname = req.body.firstname),
       (user.lastname = req.body.lastname),
