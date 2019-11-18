@@ -27,11 +27,12 @@ const addProjectController = async (req, res) => {
     await project.save(req.body);
 
     // save project id into user projects array
+    // in projects add user id***
     userModel.findOneAndUpdate(
       { _id: '5dd2504242af523654660cfc' },
-      { $addToSet: { userProjects: {projectId: project._id  }}},
+      { $addToSet: { userProjects: { projectId: project._id }}},
       { new: true },
-      (err, doc) => {
+      (err) => {
         if (err) {
           res.status(400).send({ message: "Update was not successfull" });
         } 

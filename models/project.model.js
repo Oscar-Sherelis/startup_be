@@ -29,7 +29,7 @@ const projectSchema = new mongoose.Schema({
     timeInserted: {
         type: Number
     },
-    userEmail: {
+    userId: {
         type: String
     }
 });
