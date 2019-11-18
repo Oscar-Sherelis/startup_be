@@ -25,10 +25,19 @@ const addProjectController = async (req, res) => {
     project.timeInserted = req.body.timeInserted,
 
     await project.save(req.body);
-    // get user and add project id into user
-    // https://stackoverflow.com/questions/33049707/push-items-into-mongo-array-via-mongoose
 
-    await user.userPprojects.save(project._id);
+    // save project id into user projects array
+    userModel.findOneAndUpdate(
+      { _id: '5dd2504242af523654660cfc' },
+      { $addToSet: { userProjects: {projectId: project._id  }}},
+      { new: true },
+      (err, doc) => {
+        if (err) {
+          res.status(400).send({ message: "Update was not successfull" });
+        } 
+      }
+    );
+
     return res
     .status(201)
     .send({ message: " Project added successfully " });
