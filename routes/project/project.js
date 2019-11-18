@@ -34,7 +34,7 @@ const addProject = (app) => {
   const getProject = (app) => {
     app.get('/project/:project-id', (req, res) => {
       return getProjectController(req, res);
-    })
+    });
   }
 
   // 1 validate 2 auth 3 getUsersProject
