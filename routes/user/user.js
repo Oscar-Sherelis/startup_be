@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const addNewUserController = require('../../Controllers/user/register');
-const loginController = require('../../Controllers/user/login');
+const loginController = require('../../controllers/user/login');
 const getUsersController = require('../../Controllers/user/getUsers');
 const deleteUserController = require('../../Controllers/user/deleteUser');
 
@@ -18,7 +18,7 @@ const register = (app) => {
 
 const login = (app) => {
   app.post('/login', [validate.login], (req, res) => {
-    return loginController(req, res);
+    return loginController.Login(req, res);
   });
 }
 
@@ -34,9 +34,16 @@ const deleteUser = (app) => {
   });
 }
 
+const refreshTokens = (app) => {
+  app.post('/refresh-tokens', (req, res) => {
+    return loginController.RefreshTokens(req, res);
+  })
+}
+
 module.exports =  {
   register,
   login,
   getUsers,
-  deleteUser
+  deleteUser,
+  refreshTokens
 }

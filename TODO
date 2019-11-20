@@ -1,2 +1,12 @@
-/login -> generateToken -> send token back
-/users/:id -> token by id -> 
+login -> 
+    1) patikrinamas email password
+    2) generuojami tokenai
+    3) issiunciami tokenai ir issaugomi duombazeje
+
+user/:id ->
+    1) patikrinamas access tokenas
+    2) ok -> issiunciami duomenys
+    2) not ok -> generuojamas naujas access tokenas
+    
+
+middleware
