@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 const projectModel = mongoose.model('projects');
 const project = new projectModel();
+const userModel = mongoose.model('users');
+const user = new userModel();
 
+// when making new project add project id in user projects[]
 /**
  * @param {*} req Express req Object
  * @param {*} res  Express res Object
  * @param {*} next  Express next Function
  */
-const addProjectController = async (req, res, next) => {
+const addProjectController = async (req, res) => {
 
-// responses only in Controllers ?
-// Middlewares rename to controllers DONE
 // services - validation, authentification
-// remove responses from routes
   try {
     project.projectName = req.body.projectName,
     project.photo = req.body.photo,
@@ -23,9 +23,9 @@ const addProjectController = async (req, res, next) => {
     project.projectDescription = req.body.projectDescription,
     project.lastUpdate = req.body.lastUpdate,
     project.timeInserted = req.body.timeInserted,
-    project.userEmail = req.body.email
-
+    project.userId = req.body.userId,
     await project.save(req.body);
+
     return res
     .status(201)
     .send({ message: " Project added successfully " });

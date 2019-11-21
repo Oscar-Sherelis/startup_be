@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
-const projectModel = mongoose.model('projects');
+const userModel = mongoose.model('users');
+// const user = new userModel();
 
 /**
  * @param {*} req Express req Object
  * @param {*} res  Express res Object
  * @param {*} next  Express next Function
  */
+const getUserController = (req, res, next) => {
 
- const getProjectController = async (req, res, next) => {
-    projectModel.findOne({ _id: req.params.project-id }, (err, docs) => {
+  userModel.findOne(({ _id = req.params.user-id}), (err, docs) => {
         if (err) {
           res.status(401).send({
             message: "Data collecting went wrong "
@@ -16,10 +17,10 @@ const projectModel = mongoose.model('projects');
         } else {
           res.status(200).send({
             message: "Collected data from database",
-            project: docs
+            users: docs
           });
         }
       });
- }
+}
 
- module.exports = getProjectController
+module.exports = getUserController;

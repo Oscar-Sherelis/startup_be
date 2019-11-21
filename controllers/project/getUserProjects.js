@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const projectModel = mongoose.model('projects');
-// const project = new projectModel();
 
 /**
  * @param {*} req Express req Object
@@ -8,7 +7,9 @@ const projectModel = mongoose.model('projects');
  * @param {*} next  Express next Function
  */
 
+//  when user is loged in and wants to see his projects
  const getUserProjectController = async (req, res, next) => {
+    // find by user id
     projectModel.find({ _id: req.params.users-project-id }, (err, docs) => {
         if (err) {
           res.status(401).send({
@@ -24,8 +25,10 @@ const projectModel = mongoose.model('projects');
  }
  /**
   * task in creating project do not forget
-  * Need make 2 routes users projects and route, when press on project as not registered user
-  *  After successfull login in res send userProjects Array with projects id
+  * Need make route, when press on project as not registered user
+  * 
+  * every project will have projectId after click will run action
+  * 
   * 
   * 1 When making project, save project id into user and project collections
   * 2 in front-end forEach users array with projects id
