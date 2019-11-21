@@ -24,10 +24,10 @@ const projectSchema = new mongoose.Schema({
         type: String
     },
     lastUpdate: {
-        type: Number
+        type: String
     },
     timeInserted: {
-        type: Number
+        type: String
     },
     userId: {
         type: String

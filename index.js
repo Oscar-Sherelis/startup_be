@@ -13,6 +13,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // routes
+// axios routes let do some thing if loged in
+// json webtokens need to know more
 
 // user routes
 const userRoute = require('./routes/user/user');
