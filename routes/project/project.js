@@ -18,11 +18,12 @@ const getProjectsController = require('../../controllers/project/getProjects');
 const deleteProjectController = require('../../controllers/project/deleteProject');
 const updateProjectController = require('../../controllers/project/updateProject');
 
+const isAuth = require('../../middlewares/isAuth')
+
+
 // Project routes
 const addProject = (app) => {
-    app.post('/add-project', (req, res) => {
-      return addProjectController(req, res);
-    });
+    app.post('/add-project', [addProjectController, isAuth], (req, res) => {
   }
   
   const getProjects = (app) => {
@@ -39,20 +40,17 @@ const addProject = (app) => {
 
   // 1 validate 2 auth 3 getUsersProject
   const getUserProject = (app) => {
-    app.get('/projects/:users-project-id?', (req, res) => {
-      return getUserProjectController(req, res);
+    app.get('/projects/:users-project-id?', [getUserProjectController, isAuth], (req, res) => {
     });
   }
   
   const deleteProject = (app) => {
-    app.delete('/delete-project/:id', (req, res) => {
-      deleteProjectController(req, res);
+    app.delete('/delete-project/:id', [deleteProjectController, isAuth], (req, res) => {
     });
   }
 
   const updateProject = (app) => {
-    app.put('/update-project/:id', (req, res) => {
-      updateProjectController(req, res);
+    app.put('/update-project/:id', [updateProjectController, isAuth], (req, res) => {
     });
   }
   
