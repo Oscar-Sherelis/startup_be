@@ -20,7 +20,6 @@ userRoute.register(app);
 userRoute.login(app);
 userRoute.getUsers(app);
 userRoute.deleteUser(app);
-userRoute.refreshTokens(app);
 
 // project routes
 const projectRoute = require('./routes/project/project');

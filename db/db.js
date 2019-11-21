@@ -11,4 +11,3 @@ err => { if(!err) { console.log('Successful connection') }
 
 require('../models/user.model.js');
 require('../models/project.model');
-require('../models/token.model');
