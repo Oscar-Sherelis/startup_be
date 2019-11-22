@@ -28,7 +28,6 @@ const authenticateToken = (req, res, next) => {
             return;
         }
     }
-
     next();
 };
 

@@ -46,10 +46,8 @@ const validateNewProject = async (req, res, next) => {
         professionalsNeeded: Joi.array().items(Joi.string()).unique(),
         projectArea: Joi.string().min(2).required(),
         projectShortDescription: Joi.string().min(2).max().required(),
-        projectDescription: Joi.string().min(2).max().required(),
-        
+        projectDescription: Joi.string().min(2).max().required(),    
     };
-
     const { error } = Joi.validate(req.body, schema);
     if (error) {
         return res.status(400).send(error.details[0].message);

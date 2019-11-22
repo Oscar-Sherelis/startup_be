@@ -17,13 +17,13 @@ const addProjectController = require('../../controllers/project/addProject');
 const getProjectsController = require('../../controllers/project/getProjects');
 const deleteProjectController = require('../../controllers/project/deleteProject');
 const updateProjectController = require('../../controllers/project/updateProject');
-
-const isAuth = require('../../middlewares/isAuth')
-
+const { validateNewProject } = require('../../middlewares/validation');
+const isAuth = require('../../middlewares/isAuth');
 
 // Project routes
 const addProject = (app) => {
-    app.post('/add-project', [isAuth, addProjectController], (req, res) => {
+    app.post('/add-project', [validateNewProject, isAuth], (req, res) => {
+      return addProjectController(req, res);
     });
   }
   
