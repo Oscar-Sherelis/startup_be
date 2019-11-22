@@ -3,7 +3,6 @@ const projectModel = mongoose.model('projects');
 const project = new projectModel();
 const userModel = mongoose.model('users');
 const user = new userModel();
-
 // when making new project add project id in user projects[]
 /**
  * @param {*} req Express req Object
