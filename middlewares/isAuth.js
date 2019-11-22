@@ -7,18 +7,15 @@ const authenticateToken = (req, res, next) => {
 
     if (!authHeader) 
     {
-        res.status(401).json({ message: 'Token not provided!' });
-        return;
+        return res.status(401).json({ message: 'Token not provided!' });
     }
     
-    const token = authHeader.split(' ')[1]
-    
+    const token = authHeader.split(' ')[1];
 
     try {
         const payload = jwt.verify(token, config.secret);
         if (payload.type !== config.tokens.access.type) {
-            res.status(401).json({ message: 'Invalid token!' })
-            return;
+            return res.status(401).json({ message: 'Invalid token!' });
         }
         res.userId = payload.userId
         
