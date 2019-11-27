@@ -40,10 +40,17 @@ const refreshTokens = (app) => {
   })
 }
 
+const logout = (app) => {
+  app.delete('/logout', isAuth, (req, res) => {
+    return loginController.Logout(req, res);
+  })
+}
+
 module.exports =  {
   register,
   login,
   getUsers,
   deleteUser,
-  refreshTokens
+  refreshTokens,
+  logout
 }
