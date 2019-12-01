@@ -14,7 +14,9 @@ const app = express();
  * to find project projects.find()
  */
 const addProjectController = require('../../controllers/project/addProject');
+const getProjectController = require('../../controllers/project/getProject');
 const getProjectsController = require('../../controllers/project/getProjects');
+const getUserProjectsController = require('../../controllers/project/getUserProjects');
 const deleteProjectController = require('../../controllers/project/deleteProject');
 const updateProjectController = require('../../controllers/project/updateProject');
 const { validateNewProject } = require('../../middlewares/validation');
@@ -34,14 +36,14 @@ const addProject = (app) => {
   }
 
   const getProject = (app) => {
-    app.get('/project/:project-id', (req, res) => {
+    app.get('/project/:project_id', (req, res) => {
       return getProjectController(req, res);
     });
   }
 
   // 1 validate 2 auth 3 getUsersProject
-  const getUserProject = (app) => {
-    app.get('/projects/:users-project-id?', [isAuth, getUserProjectController], (req, res) => {
+  const getUserProjects = (app) => {
+    app.get('/projects/:user-id', [isAuth, getUserProjectsController], (req, res) => {
     });
   }
   
@@ -59,7 +61,7 @@ const addProject = (app) => {
     addProject,
     getProjects,
     getProject,
-    getUserProject,
+    getUserProjects,
     deleteProject,
     updateProject
   }

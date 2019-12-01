@@ -20,8 +20,8 @@ const addProjectController = async (req, res) => {
     project.projectArea = req.body.projectArea,
     project.projectShortDescription = req.body.projectShortDescription,
     project.projectDescription = req.body.projectDescription,
-    project.lastUpdate = req.body.lastUpdate,
-    project.timeInserted = req.body.timeInserted,
+    // project.lastUpdate = req.body.lastUpdate,
+    // project.timeInserted = req.body.timeInserted,
     project.userId = req.body.userId,
     await project.save(req.body);
 

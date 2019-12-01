@@ -1,3 +1,4 @@
+// unique id generator
 const uuid = require('uuid/v4');
 const jwt = require('jsonwebtoken');
 const { secret, tokens } = require('../config/auth').jwt;

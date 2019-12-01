@@ -34,10 +34,11 @@ const deleteUser = (app) => {
   });
 }
 
+// to have new token
 const refreshTokens = (app) => {
   app.post('/refresh-tokens', (req, res) => {
     return loginController.RefreshTokens(req, res);
-  })
+  });
 }
 
 module.exports =  {
