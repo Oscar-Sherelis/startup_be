@@ -8,7 +8,6 @@ const projectModel = mongoose.model('projects');
  */
 
  const getProjectController = async (req, res, next) => {
-  console.log(req.params)
   const _id = req.params.project_id;
     projectModel.findById({ _id }, (err, docs) => {
         if (err) {

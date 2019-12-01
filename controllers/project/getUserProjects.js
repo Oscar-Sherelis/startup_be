@@ -8,9 +8,9 @@ const projectModel = mongoose.model('projects');
  */
 
 //  when user is loged in and wants to see his projects
- const getUserProjectController = async (req, res, next) => {
+ const getUserProjectsController = async (req, res, next) => {
     // find by user id
-    projectModel.find({ userId: req.params.user-id }, (err, docs) => {
+    projectModel.find({ userId: "5dd79f0d55a4e8125025f2be" }, (err, docs) => {
         if (err) {
           res.status(401).send({
             message: "Data collecting went wrong "
@@ -18,7 +18,7 @@ const projectModel = mongoose.model('projects');
         } else {
           res.status(200).send({
             message: "Collected users projects from database",
-            usersProjects: docs
+            userProjects: docs
           });
         }
       });
@@ -36,4 +36,4 @@ const projectModel = mongoose.model('projects');
   *     * after res will be set to state and foreached in front
   */
 
- module.exports = getUserProjectController;
+ module.exports = getUserProjectsController;

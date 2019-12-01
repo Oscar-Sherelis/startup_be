@@ -43,7 +43,8 @@ const addProject = (app) => {
 
   // 1 validate 2 auth 3 getUsersProject
   const getUserProjects = (app) => {
-    app.get('/projects/:user-id', [isAuth, getUserProjectsController], (req, res) => {
+    app.get('/user-projects/', (req, res) => {
+      return getUserProjectsController(req, res);
     });
   }
   
