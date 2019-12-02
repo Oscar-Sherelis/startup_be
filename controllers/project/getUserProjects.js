@@ -10,7 +10,7 @@ const projectModel = mongoose.model('projects');
 //  when user is loged in and wants to see his projects
  const getUserProjectsController = async (req, res, next) => {
     // find by user id
-    projectModel.find({ userId: "5dd79f0d55a4e8125025f2be" }, (err, docs) => {
+    projectModel.find({ userId: req.params.user }, (err, docs) => {
         if (err) {
           res.status(401).send({
             message: "Data collecting went wrong "
