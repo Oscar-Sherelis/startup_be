@@ -29,15 +29,15 @@ const addProject = (app) => {
     });
   }
   
-  const getProjects = (app) => {
-    app.get('/projects', (req, res) => {
-      return getProjectsController(req, res);
-    });
-  }
-
   const getProject = (app) => {
     app.get('/project/:project_id', (req, res) => {
       return getProjectController(req, res);
+    });
+  }
+
+  const getProjects = (app) => {
+    app.get('/projects', (req, res) => {
+      return getProjectsController(req, res);
     });
   }
 
@@ -60,8 +60,8 @@ const addProject = (app) => {
   
   module.exports =  {
     addProject,
-    getProjects,
     getProject,
+    getProjects,
     getUserProjects,
     deleteProject,
     updateProject
