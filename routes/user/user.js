@@ -1,15 +1,18 @@
 const express = require("express");
 const app = express();
 
-const addNewUserController = require('../../Controllers/user/register');
-const loginController = require('../../controllers/user/login');
-const getUsersController = require('../../Controllers/user/getUsers');
-const deleteUserController = require('../../Controllers/user/deleteUser');
+const addNewUserController = require('../../controllers/user/register');
+const Login = require('../../controllers/user/login');
+const getUsersController = require('../../controllers/user/getUsers');
+const deleteUserController = require('../../controllers/user/deleteUser');
+const RefreshTokens = require('../../controllers/user/refreshTokens');
+const Logout = require('../../controllers/user/logout');
 
 // MIDDLEWARES
 const validate = require('../../middlewares/validation');
 const isAuth = require('../../middlewares/isAuth')
-// User routes
+
+// USER ROUTES
 const register = (app) => {
   app.post('/register', [validate.registration], (req, res) => {
     return addNewUserController(req, res);
@@ -18,13 +21,7 @@ const register = (app) => {
 
 const login = (app) => {
   app.post('/login', [validate.login], (req, res) => {
-    return loginController.Login(req, res);
-  });
-}
-
-const getUsers = (app) => {
-  app.get('/users', isAuth, (req, res) => {
-    return getUsersController(req, res);
+    return Login(req, res);
   });
 }
 
@@ -34,15 +31,22 @@ const deleteUser = (app) => {
   });
 }
 
+const getUsers = (app) => {
+  app.get('/users', isAuth, (req, res) => {
+    console.log('veikia');
+    return getUsersController(req, res);
+  });
+}
+
 const refreshTokens = (app) => {
   app.post('/refresh-tokens', (req, res) => {
-    return loginController.RefreshTokens(req, res);
+    return RefreshTokens(req, res);
   })
 }
 
 const logout = (app) => {
   app.delete('/logout', isAuth, (req, res) => {
-    return loginController.Logout(req, res);
+    return Logout(req, res);
   })
 }
 
@@ -52,5 +56,5 @@ module.exports =  {
   getUsers,
   deleteUser,
   refreshTokens,
-  logout
+  logout,
 }
