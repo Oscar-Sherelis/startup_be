@@ -32,6 +32,7 @@ projectRoute.getProject(app);
 projectRoute.getUserProjects(app);
 projectRoute.deleteProject(app);
 projectRoute.updateProject(app);
+projectRoute.updateProfession(app);
 
 const PORT = 5000;
 

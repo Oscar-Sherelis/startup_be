@@ -7,19 +7,27 @@ const projectModel = mongoose.model('projects');
  * @param {*} next  Express next Function
  */
 
- const getProjectsController = async (req, res, next) => {
-    projectModel.find((err, docs) => {
-        if (err) {
-          res.status(401).send({
-            message: "Data collecting went wrong "
-          });
-        } else {
+ const getProjectsController = (req, res, next) => {
+    projectModel.find({})
+      .skip(req.params.per * req.params.page)
+      .limit(req.params.per)
+      .exec((err, projects) => {
+        console.log('projects: ' + projects)
+        projectModel.countDocuments()
+        .exec((err, count) => {
+          if(err) {
+            return err
+          }
+          console.log(req.params.page)
+          console.log(count / req.params.per)
+          console.log('projects: ' + projects)
           res.status(200).send({
-            message: "Collected data from database",
-            projects: docs
-          });
-        }
-      });
+            projects,
+            current: req.params.page,
+            pages: Math.ceil(count / req.params.per)
+          })
+        })
+      })
  }
 
  module.exports = getProjectsController

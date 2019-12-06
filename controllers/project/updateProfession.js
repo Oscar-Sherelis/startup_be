@@ -7,9 +7,7 @@ const projectModel = mongoose.model('projects');
  * @param {*} next  Express next Function
  */
 
-// need to think how update professions array
-// https://stackoverflow.com/questions/42474045/mongoose-remove-element-in-array-using-pull/42474970
-const updateProjectController = (req, res, next) => {
+const updateProfessionController = (req, res, next) => {
     projectModel.findOneAndUpdate(
       { _id: req.params.id },
       req.body,
@@ -27,4 +25,4 @@ const updateProjectController = (req, res, next) => {
     );
   }
 
-  module.exports = updateProjectController
+  module.exports = updateProfessionController
