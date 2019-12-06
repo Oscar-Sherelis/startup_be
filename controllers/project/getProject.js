@@ -8,7 +8,8 @@ const projectModel = mongoose.model('projects');
  */
 
  const getProjectController = async (req, res, next) => {
-    projectModel.findOne({ _id: req.params.project-id }, (err, docs) => {
+  const _id = req.params.project_id;
+    projectModel.findById({ _id }, (err, docs) => {
         if (err) {
           res.status(401).send({
             message: "Data collecting went wrong "

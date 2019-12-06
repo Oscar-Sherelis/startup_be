@@ -14,9 +14,12 @@ const app = express();
  * to find project projects.find()
  */
 const addProjectController = require('../../controllers/project/addProject');
+const getProjectController = require('../../controllers/project/getProject');
 const getProjectsController = require('../../controllers/project/getProjects');
+const getUserProjectsController = require('../../controllers/project/getUserProjects');
 const deleteProjectController = require('../../controllers/project/deleteProject');
 const updateProjectController = require('../../controllers/project/updateProject');
+const updateProfessionController = require('../../controllers/project/updateProfession')
 const { validateNewProject } = require('../../middlewares/validation');
 const isAuth = require('../../middlewares/isAuth');
 
@@ -27,26 +30,35 @@ const addProject = (app) => {
     });
   }
   
-  const getProjects = (app) => {
-    app.get('/projects', (req, res) => {
-      return getProjectsController(req, res);
-    });
-  }
-
   const getProject = (app) => {
-    app.get('/project/:project-id', (req, res) => {
+    app.get('/project/:project_id', (req, res) => {
       return getProjectController(req, res);
     });
   }
 
+  function getProjects (app) {
+    app.get('/projects/:per/:page', async (req, res) => {
+      // console.log(req.params)
+      return await getProjectsController(req, res);
+    });
+  }
+
   // 1 validate 2 auth 3 getUsersProject
-  const getUserProject = (app) => {
-    app.get('/projects/:users-project-id?', [isAuth, getUserProjectController], (req, res) => {
+  const getUserProjects = (app) => {
+    app.get('/user-projects/:user', (req, res) => {
+      return getUserProjectsController(req, res);
     });
   }
   
   const deleteProject = (app) => {
-    app.delete('/delete-project/:id', [isAuth, deleteProjectController], (req, res) => {
+    app.delete('/delete-project/:id', [isAuth], (req, res) => {
+      return deleteProjectController(req, res);
+    });
+  }
+
+  const updateProfession = (app) => {
+    app.put('/update-professions/:id/:profession', (req, res) => {
+      return updateProfessionController
     });
   }
 
@@ -57,9 +69,10 @@ const addProject = (app) => {
   
   module.exports =  {
     addProject,
-    getProjects,
     getProject,
-    getUserProject,
+    getProjects,
+    getUserProjects,
     deleteProject,
-    updateProject
+    updateProject,
+    updateProfession
   }

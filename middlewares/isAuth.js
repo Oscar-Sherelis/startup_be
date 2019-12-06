@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config/auth').jwt;
 
-
 const authenticateToken = (req, res, next) => {
     console.log('isAuth pradzia');
     const accessToken = req.cookies.token;

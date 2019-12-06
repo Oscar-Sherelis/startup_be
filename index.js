@@ -28,8 +28,11 @@ userRoute.logout(app);
 const projectRoute = require('./routes/project/project');
 projectRoute.addProject(app);
 projectRoute.getProjects(app);
+projectRoute.getProject(app);
+projectRoute.getUserProjects(app);
 projectRoute.deleteProject(app);
 projectRoute.updateProject(app);
+projectRoute.updateProfession(app);
 
 const PORT = 5000;
 

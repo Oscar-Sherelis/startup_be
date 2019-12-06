@@ -64,11 +64,12 @@ const login = async (req, res, next) => {
 const validateNewProject = async (req, res, next) => {
     const schema = {
         projectName: Joi.string().min(2).max(255).required(),
-        projectLocation: Joi.string().min(2).max(255),
-        professionalsNeeded: Joi.array().items(Joi.string().min(2).max(255)).unique(),
-        projectArea: Joi.string().min(2).max(255),
-        projectShortDescription: Joi.string().min(2).max(255),
-        projectDescription: Joi.string().min(2).max(255)   
+        projectLocation: Joi.string().min(2).max(255).required(),
+        professionalsNeeded: Joi.array().items(Joi.string()).unique(),
+        projectArea: Joi.string().min(2).required(),
+        projectShortDescription: Joi.string().min(2).max(150).required(),
+        projectDescription: Joi.string().min(2).max(400).required(),   
+        userId: req.body.userId
     };
     const { error } = Joi.validate(req.body, schema);
     if (error) {
