@@ -7,14 +7,13 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 app.use(cors());
 
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(bodyParser.json());
-
-// routes
-// axios routes let do some thing if loged in
-// json webtokens need to know more
 
 // user routes
 const userRoute = require('./routes/user/user');
@@ -23,6 +22,7 @@ userRoute.login(app);
 userRoute.getUsers(app);
 userRoute.deleteUser(app);
 userRoute.refreshTokens(app);
+userRoute.logout(app);
 
 // project routes
 const projectRoute = require('./routes/project/project');

@@ -35,8 +35,8 @@ const getUsersController = async (req, res) => {
     projects
     // photo
   }
-
-  return res.json(toSend);
-}
+  console.log(toSend)
+  return res.send(toSend);
+};
 
 module.exports = getUsersController;
