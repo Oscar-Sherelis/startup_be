@@ -33,7 +33,6 @@ const deleteUser = (app) => {
 
 const getUsers = (app) => {
   app.get('/users', isAuth, (req, res) => {
-    console.log('veikia');
     return getUsersController(req, res);
   });
 }
