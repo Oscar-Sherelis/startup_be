@@ -17,9 +17,9 @@ const addNewUser = async (req, res) => {
       (user.description = req.body.description);
 
     await user.save(req.body);
-    return res.send({ message: "User added successfully " });
+    return res.status(200).send({ message: "User added successfully " });
   } catch (e) {
-    return e;
+    return res.status(500).send({ message: 'Something went wrong...' });
   }
 };
 

@@ -10,16 +10,38 @@ const registration = async (req, res, next) => {
         lastname: Joi.string().min(2).max(255).required(),
         email: Joi.string().min(5).max(255).required().email(),
         password: Joi.string().min(3).max(255).required(),
-        phonenumber: Joi.string().min(8).max(16)
+        phonenumber: Joi.string().allow(''),
+        country: Joi.string().allow(''),
+        description: Joi.string().allow(''),
+        image: Joi.string().allow('')
     };
 
     const { error } = Joi.validate(req.body, schema);
     if (error) {
-        return res.status(400).send(error.details[0].message);
+        const input = error.details[0].message.split('\" ')[0].split('\"')[1]
+        const inputErr = error.details[0].message.split('\" ')[1]
+        switch (input) {
+            case 'firstname':
+                return res.status(400).send({ message: 'Firstname ' + inputErr });
+            case 'lastname':
+                return res.status(400).send({ message: 'Last name ' + inputErr });
+            case 'email':
+                return res.status(400).send({ message: 'Email ' + inputErr });
+            case 'password':
+                return res.status(400).send({ message: 'Password ' + inputErr });
+            case 'phonenumber':
+                return res.status(400).send({ message: 'Phone number ' + inputErr });
+            case 'country':
+                return res.status(400).send({ message: 'Country ' + inputErr });
+            case 'description':
+                return res.status(400).send({ message: 'Introduction ' + inputErr });                    
+            default:
+                return res.status(400).send({ message: 'something went wrong...'})
+                break;
+        }
     } else {
-        // FIND AN EXISTING USER
         let user = await User.findOne({ email: req.body.email});
-        if (user) return res.status(400).send("User already registered"); 
+        if (user) return res.status(400).send({ message: "User already registered" }); 
         else return next();
     }
         

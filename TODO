@@ -1,12 +1,7 @@
-login -> 
-    1) patikrinamas email password
-    2) generuojami tokenai
-    3) issiunciami tokenai ir issaugomi duombazeje
+pakeisti failu struktura:
+isskaidyti user/login.js ir tada pakeisti importus middlewares
 
-user/:id ->
-    1) patikrinamas access tokenas
-    2) ok -> issiunciami duomenys
-    2) not ok -> generuojamas naujas access tokenas
-    
+login turi sukurti cookies
+authentication'o middleware'as turi patikrinti jeigu yra access token'as, jeigu nera grazinti status 401
+refresh-token rout'as turi atnaujinti token'us ir grazinti naujus token'us
 
-middleware
