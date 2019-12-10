@@ -20,13 +20,9 @@ const projectModel = mongoose.model('projects');
           if (err) {
             return err
           }
-          console.log(req.params.page)
-          console.log(count / req.params.per)
-          console.log('projects: ' + projects)
           res.status(200).send({
             projects,
-            current: req.params.page,
-            pages: Math.ceil(count / req.params.per)
+            count
           })
         })
       })
